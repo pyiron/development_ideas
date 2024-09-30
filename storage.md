@@ -13,7 +13,9 @@ def save(
     path: str,
     mode: str = "hdf5"
 )
+```
 
+```python
 def load(
     path: str
     mode: str = "hdf5"
