@@ -17,5 +17,8 @@ For more detials [docs.python.org](https://docs.python.org/3/library/concurrent.
 
 The goal is to unify the two interfaces in `executorlib` to provide the caching of the `Fileexecutor` as optional feature. 
 
+## Limitation / Requirements
+A callable which is submitted to an executor has to be serializable. In the case of `concurrent.future.Executor` the serialization uses `pickle` in the case of `executorlib` `cloudpickle` is used. By using the `cloudpickle` by value pickle capability `executorlib` can execute callables defined in the jupyter notebook, while the same is not possible with the executors defined in the standard library. 
+
 ## SPEC
 Based on the definition of the `concurrent.future.Executor` in combination with the recent developments in `executorlib` I have the feeling we covered the most essential functionality of an executor required for our workflow application. Still this topic is open for discussion. 
