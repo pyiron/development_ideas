@@ -9,8 +9,11 @@ Data classes can be nested, i.e. a data class can contain elements that are data
 Optional convenience features:
 - overload dataclass to make it behave like a dictionary
   - allows calling python functions with my_func(**my_dataclass)
-- dataclass elements should have type hints
-- should be writable/loadable to json and hdf5 (for storage)
-- should be creatable by import (must be in a file-based module)
+- dataclass elements have type hints
+  - make functions/nodes more robust by guaranteeing that a field has a well-defined type
+  - allows us to check for compatible input/output pairs
+  - provide the GUI with information about the optimal input widget (e.g. checkbox for bool) 
+- writable/loadable to json and hdf5 (for storage)
+- creatable by import (must be in a file-based module)
   - allows us to create a data class instance by knowing the import path and values of the fields
 
