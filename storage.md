@@ -10,6 +10,18 @@ In addition to whatever other benefits a particular backend brings, python objec
 
 > `cloudpickle` idea: Users always get successful storage, even for un-pickleable object -- but at the cost that they might lose benefits of their backend as we simply `cloudpickle` their object and then store the bytestream
 
+pyiron is designed to provide default serialization to formats suitable for long-term storage such as hdf5 or json, without requiring the user to write/modify storage routines such as `__getstate__` etc. The fallback to (cloud) pickle should be avoided whenever possible. The following types are supported:
+
+- basic Python types (int, float, str, etc.) (works out of the box)
+- dataclasses consisting of fields that are serializable by default (json, hdf5, etc.)
+  - such dataclasses are saved/loaded via their import path (-> works for dataclass definitions that are file-based, i.e. in a Python module)
+  - works recursively, i.e. a dataclass field can be a dataclass
+- Function nodes are stored by converting input and output into dictionaries (or dataclasses). The function of the node is stored/loaded via its import path (equivalent to dataclasses).
+- Types that cannot be serialized by default
+  - Callables/Objects
+  - Workaround: store/load such data via a generator node, where the node only requires standard input.
+    - Example: instead of storing an ASE instance, store the generator, e.g. atomistic.structure.built.bulk('Al'). The generator's input, such as the species ('Al'), has only standard types        
+
 ## Requirements for the user-facing interface
 
 The pyironic storage interface should offer at least `save(obj: typing.Any, filename: pathlib.Path | str, **kwargs)`, `load(filename: pathlib.Path | str, **kwargs)`, and `delete(filename: pathlib.Path | str, **kwargs)` interfaces for (de)serializing objects.
