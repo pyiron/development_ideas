@@ -1,7 +1,11 @@
-# Concepts
+# Definitions
+
+- A node is an atomic unit of a workflow which executes an underlying function using one or more inputs to return one or more outputs.
+
+# Concepts [^1]
 
 - pyiron is simple
-  - Any python function can be turned into a node in one line [^1]
+  - Any python function can be turned into a node in one line [^2]
 - pyiron is interoperable
   - As long as the underlying function can run on different platforms, pyiron can run the node on any platform.
 - pyiron is HPC-compatible
@@ -13,4 +17,5 @@
 - pyiron is modular 
     - The users should have the option to select which of the pyiron core modules they want to use. 
 
-[^1]: Currently not true for functions which might return very different types and has multiple return statements.
+[^1]: Currently the list does not follow a specific order.
+[^2]: Currently not true for functions which might return very different types and has multiple return statements.
