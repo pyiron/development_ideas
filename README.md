@@ -2,6 +2,10 @@
 
 In this repo, you find the main components of the next generation workflow manager and their specs. Feel free to open PR's to propose changes
 
+We define specs to explain the structure of the pyiron project with a specific focus on how the individual components of pyiron interact with each other. pyiron in this case refers to both `pyiron_workflow` and `pyiron_base` as the two current interfaces we provide as part of the pyiron project. 
+
+On an abstract level we see as specs as defining the interfaces between the building blocks which together form the pyiron project. Peter Naur wrote an article on [programming as theory building](https://pages.cs.wisc.edu/~remzi/Naur.pdf) which highlights that effective extension of an existing program requires more than just the access to the whole code, especially it requires an understanding of the scope of the program and the concepts it is based on.
+
 ## What's spec?
 
 Well written specs should:
