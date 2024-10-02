@@ -10,6 +10,7 @@
   - The input and the output of any node can be stored in a file system and loaded after the session is closed
 - pyiron allows for collaboration
   - Nodes can be imported via the conventional python `import`-statement
-
+- pyiron is modular 
+    - The users should have the option to select which of the pyiron core modules they want to use. 
 
 [^1]: Currently not true for functions which might return very different types and has multiple return statements.
