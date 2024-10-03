@@ -47,6 +47,7 @@ NB: It doesn't mean that this phrase must not be written. It just needs more cla
 * User Interface
   * [Function](function.md)
   * [Dataclasses](dataclasses.md)
+  * [Scientific Data](publication.md)
 * Backend
   * [Storage](storage.md)
   * [Database](database.md)
