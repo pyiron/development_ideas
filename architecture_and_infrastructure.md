@@ -12,7 +12,9 @@ In this section, we aim to provide specifications on how pyiron interfaces with 
 - typical computing-centre policies affected by a pyiron setup
 - supported queueing systems (SLURM, SGE, ...)
 
-## Containerisation
+## Containerisation: creating images, distributing and defining specs for runtime environments
 - which containerization technologies (Docker, podman, kubernetes, ...) we support with "official" base images. **This also interfaces with the channels/registries we want to use for distributing software (see branch "distribution")**
 - Requirements and best practices for creating (Docker) containers based on the images provided by us
+
+To make this aspect more tangible, we could refer to and make use of sepcifivatiosn defined be the Open Container Initiative:
 - Aquire [OCI-conform](https://opencontainers.org/) images, their distribution and runtime envs: this ensures that any runtime (e.g. a jupyterhub deployment) conform to OCI specififications can actually build and run containers from the images. This can increase interoperibility significantly. Links: [OCI image specs](https://specs.opencontainers.org/image-spec/?v=v1.0.1), [OCI distrbution specs](https://specs.opencontainers.org/distribution-spec/?v=v1.0.0), [OCI runtime specs](https://specs.opencontainers.org/runtime-spec/?v=v1.0.2). This whole point might balso be very interesting in the FAIR context and for the usability of pyiron in digitlization projects.
