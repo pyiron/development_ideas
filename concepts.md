@@ -19,6 +19,8 @@
   - The users should have the option to select which of the pyiron core modules they want to use.
 - pyiron tracks the source
   - Users can add the DOI of the underlying methods/software packages to the node
+- pyiron understands physics
+  - Nodes as well as their inputs and outputs can be provided with ontological types
 
 # User Groups
 While `pyiron` originally only addressed the atomistics community, the new generation of `pyiron` has a much wider range of potential users. They can be roughly defined into the following groups:
