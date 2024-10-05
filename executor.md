@@ -20,3 +20,7 @@ For more detials [docs.python.org](https://docs.python.org/3/library/concurrent.
 
 ## Required developments 
 The goal is to unify the two interfaces in `executorlib` to provide the caching of the `Fileexecutor` as optional feature. 
+
+## On node-based vs graph-based HPC submission
+It would be convenient if users could send the entire graph to the HPC and go afk while the graph is automatically executed in the required sequence and waits for required jobs to finish. However, such a functionailty can also be achieved in the node-based submission by having a cron job that periodically checks the satus of a node-based job in the queuing system. A drawback of the graph-based submission is that it may end up submitting jobs that don't really belong on a HPC. Outside of some institutes, such practices would very quickly get accounts banned. Hence, it may be prudent to have the node based execution as the default, and have an additional check for the graph-based submission (e.g., yes_i_really_want_to_submit_the_entire_graph_to_the_queue=True).
+
