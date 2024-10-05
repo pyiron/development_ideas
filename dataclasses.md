@@ -20,7 +20,12 @@ Optional convenience features:
 ## Challenges
 The priliminary implementation of dataclasses in [pyiron_dataclasses](https://github.com/pyiron/pyiron_dataclasses) highlighted that it is important to test dataclasses for backwards compatibility. While the storage format might change more frequently, the dataclass format should remain more or less stable and it should be versioned to enable the import of previous calcualtion. While this is something which was originally promised for pyiron it was not achieved so far.
 
+The dataclasses in [pyiron_dataclasses](https://github.com/pyiron/pyiron_dataclasses) can pretty much account for all the information in the `pyiron_atomistics` job since all the information is stored in the HDF5 file which the dataclass uses. However, the dataclasses in `pyiron_nodes` are parts of workflows which do not account for all information in th graph. A "`wf.get_master_dataclass()`" thingy might be needed that automatically collects all aspects of the workflow graph which inlcudes sub-dataclass nodes (also including the functions themselves themselves as strings??). [^1]
+
 ## Existing Implementations
 * [pyiron_dataclasses](https://github.com/pyiron/pyiron_dataclasses) The `pyiron_dataclasses` module implements dataclasses to read `pyiron_atomistics` job objects, namely LAMMPS calculation, Sphinx calculation and VASP calculation from HDF5 files and represent them as dataclasses. In addition, the dataclasses from `pyiron_dataclasses` are used in `pyiron_base` to represent the executable object and server object attached to every job. 
 * [pyiron/pyiron_atomistics#1571](https://github.com/pyiron/pyiron_atomistics/pull/1571) Includes additional dataclasses for `calc_minimize()` and `calc_md()`. 
 * [pyiron_nodes](https://github.com/pyiron/pyiron_nodes/blob/main/pyiron_nodes/atomistic/calculator/data.py) Contains additional dataclasses to be used in combination with `pyiron_workflow`. 
+
+
+[^1]: (Tara) I think this point is closely linked to the storage specs, but I thought it fit here better than in storage.md
