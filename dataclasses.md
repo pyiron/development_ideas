@@ -1,9 +1,9 @@
 # Data Classes
-As a generic interface to connect functions. To have the same interface for different simulation codes, it would be great to have the same functions with the same input and/or output arguments available for different simulation codes. But instead of having a big list of input/output arguments, it's better to use data classes. Currently these data classes are scattered in different modules, so it would be great to unify them in one place: https://github.com/pyiron/pyiron_base/blob/main/pyiron_base/dataclasses/job.py , pyiron/pyiron_atomistics#1571 and https://github.com/pyiron-dev/pyiron-hdf5-format/tree/main/pyiron_io/dataclasses.
+Python [dataclasses](https://docs.python.org/3/library/dataclasses.html) are part of the python standard library and were originally developed to  [define classes which exist primarily to store values which are accessible by attribute lookup](https://peps.python.org/pep-0557/#rationale). In pyiron dataclasses are used for data transfer between functions, they define the generic interface so ideally two simulation codes which implement the same methodology e.g. density functional theory (DFT), use the same dataclasses as input and produce the same dataclasses as output, so switching from one simulation code to another is as easy as changing the function while the rest of the workflow remains the same. 
 
-In pyiron_nodes examples of data classes for input and output are given, e.g. in
-https://github.com/pyiron/pyiron_nodes/blob/main/pyiron_nodes/atomistic/calculator/data.py
+Dataclasses are preferable over individual input arguments as they allow grouping parameters which belong to the same context. 
 
+## Interface 
 Data classes can be nested, i.e. a data class can contain elements that are data classes.
 
 Optional convenience features:
@@ -17,3 +17,10 @@ Optional convenience features:
 - creatable by import (must be in a file-based module)
   - allows us to create a data class instance by knowing the import path and values of the fields
 
+## Challenges
+The priliminary implementation of dataclasses in [pyiron_dataclasses](https://github.com/pyiron/pyiron_dataclasses) highlighted that it is important to test dataclasses for backwards compatibility. While the storage format might change more frequently, the dataclass format should remain more or less stable and it should be versioned to enable the import of previous calcualtion. While this is something which was originally promised for pyiron it was not achieved so far.
+
+## Existing Implementations
+* [pyiron_dataclasses](https://github.com/pyiron/pyiron_dataclasses) The `pyiron_dataclasses` module implements dataclasses to read `pyiron_atomistics` job objects, namely LAMMPS calculation, Sphinx calculation and VASP calculation from HDF5 files and represent them as dataclasses. In addition, the dataclasses from `pyiron_dataclasses` are used in `pyiron_base` to represent the executable object and server object attached to every job. 
+* [pyiron/pyiron_atomistics#1571](https://github.com/pyiron/pyiron_atomistics/pull/1571) Includes additional dataclasses for `calc_minimize()` and `calc_md()`. 
+* [pyiron_nodes](https://github.com/pyiron/pyiron_nodes/blob/main/pyiron_nodes/atomistic/calculator/data.py) Contains additional dataclasses to be used in combination with `pyiron_workflow`. 
