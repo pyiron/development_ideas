@@ -18,9 +18,10 @@ The API of the `Executor` class is defined based on there functions:
 
 For more detials [docs.python.org](https://docs.python.org/3/library/concurrent.futures.html) - the explanations above are shortened.
 
-## Required developments 
-The goal is to unify the two interfaces in `executorlib` to provide the caching of the `Fileexecutor` as optional feature. 
-
-## On node-based vs graph-based HPC submission
-It would be convenient if users could send the entire graph to the HPC and go afk while the graph is automatically executed in the required sequence and waits for required jobs to finish. However, such a functionailty can also be achieved in the node-based submission by having a cron job that periodically checks the satus of a node-based job in the queuing system. A drawback of the graph-based submission is that it may end up submitting jobs that don't really belong on a HPC. Outside of some institutes, such practices would very quickly get accounts banned. Hence, it may be prudent to have the node based execution as the default, and have an additional check for the graph-based submission (e.g., yes_i_really_want_to_submit_the_entire_graph_to_the_queue=True).
+## Required Developments 
+* The goal is to unify the two interfaces in `executorlib` to provide the caching of the `Fileexecutor` as optional feature. 
+* For both `pyiron_base` and `pyiron_workflow` it would be convenient if users could send the entire graph to the HPC for execution, without relying on a connection to an external process monitoring the graph as it is currently implemented in `pyiron_workflow`. This can be achieved if a series of smaller nodes with similar resource requirements can be converted into one larger task which is then executed by `executorlib` as a single job in the queuing system. So a node in `pyiron_workflow` does not have a one to one relation to an task in `executorlib`. In `executorlib` tasks are primarily defined by having similar resoruce requirements, only when a process has changing resource requirements, then it makes sense to separate them into individul tasks in `executorlib`. In the same way `executorlib` can be used to efficiently parallelize the execution.  
+* Implement remote file handling. For example when two VASP calculation are submitted to an HPC cluster, with the second VASP calculation depending on the `WAVECAR` from the first VASP calculation. We do not want to copy the `WAVECAR` from the HPC to the workstation and then back from the workstation to the HPC. Still this level of remote file handling is currently not yet implemented in `executorlib`.
+* Update documentation of `executorlib`. Currently prototypical features like the submission to an queuing system outside the queuing system allocation are only documented as prototypical examples [pyiron-dev/remote-executor](https://github.com/pyiron-dev/remote-executor) but are not yet included in the official documentation.
+* Extend `pyiron_base` to always use `executorlib` for the submission of jobs. Currently, `pyiron_base` still directly interacts with `pysqa` which results in duplicated code. This can be streamlined by using `executorlib` directly. 
 
