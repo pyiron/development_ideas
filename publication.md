@@ -33,5 +33,12 @@ Pyiron should be able to users with the following options to upload data to the 
 * Platforms like ckan have a limited number of datasets that they can handle, a few thousands at most. We would need features that can identify semantically similar workflows and pack them together. [^1]
 * What is a material?? How do we let the publishing platform know in an automated manner that our simulations should be linked/tagged to nickel superalloy type 718, or steel grade 316. Such a feature would invaluable to connect our data with the experimentalists.
 
-[^1]: This conversation [here](https://github.com/pyiron/specs/pull/27#pullrequestreview-2350130002)
+## FAIR principles [^2]
 
+A major point in data publication is FAIR compliance. A detailed assessment is provided in fair_assessment.md, specifically in 'pyiron as a data generator'. The main points would be:
+- metadata harmonisation with community standards, e.g. the implementation of an updated publication template.
+- use of PIDs and interlinking data and metadata files.
+- interoperability with the (meta)data formats in the aforementioned initiatives (DataCite, NOMAD, etc.)
+
+[^1]: This conversation [here](https://github.com/pyiron/specs/pull/27#pullrequestreview-2350130002)
+[^2]: [fair_assessment.md](fair_assessment.md)
