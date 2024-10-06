@@ -44,6 +44,7 @@ NB: It doesn't mean that this phrase must not be written. It just needs more cla
 ## Overview 
 * Abstract Definition
   * [Concepts](concepts.md)
+  * [FAIR](fair_assessment.md)
 * User Interface
   * [Function](function.md)
   * [Dataclasses](dataclasses.md)
