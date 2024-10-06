@@ -32,5 +32,16 @@ While `pyiron` originally only addressed the atomistics community, the new gener
 
 The different user groups use a different selection of pyiron core modules. 
 
+
+# Interoperability
+
+Interoperability is a core concept of pyiron development. This point appears in all of the FAIR principles, but since workflows are considered here, this should be subdivided into different categories:
+
+- Software interoperability: both classical pyiron and pyiron_workflow can be used to provide a generic or unified interface between software tools. Classical pyiron provides this with pyiron jobs while the pyiron_workflow provides it with nodes that encapsulate code execution.
+- (Meta)Data interoperability: data generated with pyiron is lacking interoperability at the moment, see details I1 - FAIR in fair_assessment.md.
+- Workflow interoperability: A workflow is interoperable with other platforms. For classical pyiron, this is somewhat complicated as there is no strict definition of the form and structure of a workflow. Operations can be performed outside of pyiron jobs. While this is great for rapid prototyping, it also means that a workflow cannot be fully reproduced. For pyiron_workflow, the complete provenance can be captured. If export to other formats such as CWL (or even a non code representation) is available, it can be considered interoperable with other platforms. Note that pickling is not a non-code representation.
+
+Here there are several activities that needs to discussed to form a full strategy (collaborations with Aiida, NOMAD, CWL interoperability, Kadi4Mat, and Common Workflow Description for experiments, for more details see I1 - FAIR4RS in fair_assessment.md).
+
 [^1]: Currently the list does not follow a specific order.
 [^2]: Currently not true for functions which might return very different types and has multiple return statements.
