@@ -59,6 +59,7 @@ The majority of these use cases deal with specific topics, for example, APT anal
 - Packages should be as lean as possible with minimum requirements. This brings questions related to distribution of nodes within pyiron_workflow. Would the strategy still be to include all nodes in a node library package? This would mean that nodes for APT analysis (paraprobe-toolbox) and nodes for calphy would have same dependencies. 
 - Software tools should ideally have web based documentation, and not uniquely docstrings.
 - Installation should be easy as possible, i.e. setting up of config files, data folders, executable scripts should be avoided as much as possible.
+- Each node/job should create an execution folder, and store the produced data objects, and execution records within. This is currently in pyiron_workflow, and would be a very nice feature to have (even if optional).
 
 These requirements should be met by all software tools developed within pyiron to facilitate the broader adoption in the MSE community.
 
