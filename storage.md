@@ -54,7 +54,7 @@ Examples of possible back-end formats:
 - It stores as much versioning information as possible (module version, git hash if module is in a git repo, maybe even a hash of the raw source code?), and gives users some freedom for how strictly they want to enforce versioning at load time (ranging from "just go for it", to "look at the metadata of what is about to be loaded -- does my current environment match that metadata? If not throw an exception!").
 - It is fast (save/load cycle comparable to `pickle`).
 - It is memory efficient (storage footprint comparable to `pickle`).
-- It should include options semantically grouping together workflows in differet storage locations which could be useful for a variety of purposes like publishing, combining smaller workflows into larger workflows etc.
+- It should include options for semantically grouping together workflows in differet storage locations which could be useful for a variety of purposes like publishing, combining smaller workflows into larger workflows etc.
 
 
 # Tinybase Interface
