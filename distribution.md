@@ -43,4 +43,25 @@ But this has the problem that the node you need is in another folder. E.g., the 
   - band_structure_utility
 * and so on
 
+
+## Ease of use for the end user (NFDI-MatWerk perspective) [^2]
+
+The current status of pyiron in MatWerk can be summarised in the following activities:
+
+- IUC04: https://doi.org/10.5281/zenodo.13220179
+- IUC07: https://doi.org/10.5281/zenodo.12687143
+- IUC09: https://doi.org/10.5281/zenodo.12594062
+- IUC10: https://nfdi-matwerk.de/project/structure/use-cases/iuc10
+- IUC17: https://doi.org/10.5281/zenodo.12207313
+
+The majority of these use cases deal with specific topics, for example, APT analysis, experimental workflows, atomistic simulations. I have identified some common requirements based on the feedback from the collaborators:
+
+- Packages should be as lean as possible with minimum requirements. This brings questions related to distribution of nodes within pyiron_workflow. Would the strategy still be to include all nodes in a node library package? This would mean that nodes for APT analysis (paraprobe-toolbox) and nodes for calphy would have same dependencies. 
+- Software tools should ideally have web based documentation, and not uniquely docstrings.
+- Installation should be easy as possible, i.e. setting up of config files, data folders, executable scripts should be avoided as much as possible.
+- Each node/job should create an execution folder, and store the produced data objects, and execution records within. This is currently in pyiron_workflow, and would be a very nice feature to have (even if optional).
+
+These requirements should be met by all software tools developed within pyiron to facilitate the broader adoption in the MSE community.
+
 [^1]: (Tara) I have added these points as open questions for discussion
+[^2]: (Sarath) I have added these points in the context of NFDI-MatWerk and my concerns for the distribution.

@@ -27,5 +27,10 @@ The dataclasses in [pyiron_dataclasses](https://github.com/pyiron/pyiron_datacla
 * [pyiron/pyiron_atomistics#1571](https://github.com/pyiron/pyiron_atomistics/pull/1571) Includes additional dataclasses for `calc_minimize()` and `calc_md()`. 
 * [pyiron_nodes](https://github.com/pyiron/pyiron_nodes/blob/main/pyiron_nodes/atomistic/calculator/data.py) Contains additional dataclasses to be used in combination with `pyiron_workflow`. 
 
+## Dataclasses as standalone objects
+Dataclasses should be human and machine understandable outside of the workflow it was developed for in order to reusability of both workflow and data. 
+* Dataclass attributes should include PIDs for each item, including documentation.
+* Dataclasses should have versioning, if names of attributes change.
+* An further option could be to use pydantic, for example see [Calphy input class](https://github.com/ICAMS/calphy/blob/main/calphy/input.py).
 
 [^1]: (Tara) I think this point is closely linked to the storage specs, but I thought it fit here better than in storage.md
