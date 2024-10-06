@@ -27,7 +27,7 @@ Pyiron should be able to users with the following options to upload data to the 
 ## Challenges
 
 * With the "open beta" release of `pyiron_workflow`, we would need to agree on a relatively concrete method to decide which nodes/graphs receive the conceptual dictionary treatment and a unique object type. One possible requirement could be that the node has to contain a proper docstring (which may also have useful literature references for the science behind the function/macro). Another requirement could be that the node is available on the *main* branch of the pyiron_nodes repo.
-* Platforms like ckan have a limited number of datasets that they can handle, a few thousands at most. We would need features that can identify semnatically similar workflows and pack them together [^1]
+* Platforms like ckan have a limited number of datasets that they can handle, a few thousands at most. We would need features that can identify semantically similar workflows and pack them together. [^1]
 * What is a material?? How do we let the publishing platform know in an automated manner that our simulations should be linked/tagged to nickel superalloy type 718, or steel grade 316. Such a feature would invaluable to connect our data with the experimentalists.
 
 [^1]: This conversation [here](https://github.com/pyiron/specs/pull/27#pullrequestreview-2350130002)
