@@ -45,6 +45,9 @@ NB: It doesn't mean that this phrase must not be written. It just needs more cla
 * Abstract Definition
   * [Concepts](concepts.md)
   * [FAIR](fair_assessment.md)
+* Ecosystem
+  * Collaboration
+  * [Architecture and infrastructure](architecture_and_infrastructure.md)
 * User Interface
   * [Function](function.md)
   * [Dataclasses](dataclasses.md)
