@@ -1,6 +1,6 @@
 # FAIR assessment of pyiron
 
-## FAIR4RS (https://doi.org/10.15497/RDA00068)
+## FAIR4RS (https://doi.org/10.15497/RDA00068) [^1]
 
 **Findable
 F: Software, and its associated metadata, is easy for both humans and machines to find
@@ -164,3 +164,6 @@ Pyiron
 A workflow instance generated in pyiron
 
 [![FAIR checklist badge](https://fairsoftwarechecklist.net/badge.svg)](https://fairsoftwarechecklist.net/v0.2?f=10&a=10010&i=20300&r=112)
+
+
+[^1] https://doi.org/10.15497/RDA00068
