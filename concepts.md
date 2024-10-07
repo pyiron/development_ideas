@@ -5,6 +5,7 @@
 
 # Concepts [^1]
 
+fill in points for pyiron is fair
 - pyiron is simple
   - Any python function can be turned into a node in one line [^2]
 - pyiron is interoperable
