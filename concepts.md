@@ -43,5 +43,8 @@ Interoperability is a core concept of pyiron development. This point appears in 
 
 Here there are several activities that needs to discussed to form a full strategy (collaborations with Aiida, NOMAD, CWL interoperability, Kadi4Mat, and Common Workflow Description for experiments, for more details see I1 - FAIR4RS in fair_assessment.md).
 
+# Collaboration
+At the moment, we can suggest a prototypical collaboration-setup [graphathon](https://github.com/mbruns91/graphathon) in the form of a github repository-template. We need some discussion on in which direction this should be further developed: What are our requirements for a collaboration platform? What are the use-cases? What backend should a more production-ready version use?
+
 [^1]: Currently the list does not follow a specific order.
 [^2]: Currently not true for functions which might return very different types and has multiple return statements.
