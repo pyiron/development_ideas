@@ -21,6 +21,8 @@
   - Users can add the DOI of the underlying methods/software packages to the node
 - pyiron understands physics
   - Nodes as well as their inputs and outputs can be provided with ontological types
+- pyiron workflows are reproducible
+  - workflows (classic & node-based) are reproducible via a well defined runtime environments.
 
 # User Groups
 While `pyiron` originally only addressed the atomistics community, the new generation of `pyiron` has a much wider range of potential users. They can be roughly defined into the following groups:
@@ -45,6 +47,11 @@ Here there are several activities that needs to discussed to form a full strateg
 
 # Collaboration
 At the moment, we can suggest a prototypical collaboration-setup [graphathon](https://github.com/mbruns91/graphathon) in the form of a github repository-template. We need some discussion on in which direction this should be further developed: What are our requirements for a collaboration platform? What are the use-cases? What backend should a more production-ready version use?
+
+# Reproducibility
+pyiron workflows can be published/deployed/shared/... in a reproducible way on two levels:
+- **Conda environment**: by providing notebook(s) and an `environment.yml`, users can set up similar conda environments for executing a workflow.
+- **Containerization**: based on the Conda environemnt approach, we can also go one step further and pack the workflow and the whole runtime environment in a container image. When Docker is the backend of our choice, such containers can be based on  the flavors we provide via [pyiron/docker-stacks](https://github.com/pyiron/docker-stacks). Then, when the container images are built, a simple `docker run` command is enough to be provided with jupyterhub, a readily-configured condaenvironment and an isolated file-system containing all neccessary files (notebooks, datafiles, ...). During the building process, docker allows for basically anything that can be done with a terminal (e.g. cloning of repositories or the execution of shell-scrips) for a workflow to be reproduced automatically.
 
 [^1]: Currently the list does not follow a specific order.
 [^2]: Currently not true for functions which might return very different types and has multiple return statements.
