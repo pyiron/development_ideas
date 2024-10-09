@@ -29,7 +29,7 @@ While `pyiron` originally only addressed the atomistics community, the new gener
 
 * **performance oriented expert user**: A user interested in maximum performance might just use `executorlib` and develop their own minimalistic storage solution to only store the material properties they calculated without storing the results of individual calculation. 
 * **minimalist**: A user who previously used `snakemake` switches to use `pyiron_base` based on its minimalistic syntax which internally uses the newly defined storage module and database module plus `executorlib` and the auto-completion based user interface `pyiron_base` introduced. 
-* **workflow expert**: A user interested in graph based workflows but without access to a Jupyter environment on their HPC might use `pyiron_workflow` which internally uses the newly defined storage module and database module plus `executorlib`.
+* **workflow expert**: A user interested in graph based workflows but without access to a Jupyter environment on their HPC might use `pyiron_workflow` which internally optionally uses `executorlib`, and in the future uses the forthcoming database module and optionally uses the forthcoming storage module.
 * **beginner user**: A user who has less experience with python programming and enjoys the overview provided by an visual programming interface might use `pyiron_xyflow` which is based on `pyiron_workflow` which internally uses the newly defined storage module and database module plus `executorlib`.
 
 The different user groups use a different selection of pyiron core modules. 
