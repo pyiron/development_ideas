@@ -50,6 +50,7 @@ NB: It doesn't mean that this phrase must not be written. It just needs more cla
   * [Dataclasses](dataclasses.md)
   * [Datatypes](datatypes.md)
   * [Scientific Data](publication.md)
+  * [Publication](publication.md)
 * Backend
   * [Visual Programming](visualprogramming.md)  
   * [Storage](storage.md)
