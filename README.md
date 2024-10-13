@@ -55,5 +55,5 @@ NB: It doesn't mean that this phrase must not be written. It just needs more cla
   * [Storage](storage.md)
   * [Database](database.md)
   * [Executor](executor.md)
-  * [Distribution](distribution.md
+  * [Distribution](distribution.md)
   * [Architecture and Infrastructure](architecture_and_infrastructure.md)
