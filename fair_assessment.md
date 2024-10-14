@@ -153,31 +153,113 @@ See I1 and F3
     See F2, I1 and I1 (FAIR4RS)
 
 
-## pyiron as a generator of computational workflows - [FAIR for workflows](https://direct.mit.edu/dint/article/2/1-2/108/10003/FAIR-Computational-Workflows)
+## pyiron as a generator of computational workflows - [FAIR for workflows](https://arxiv.org/pdf/2410.03490)
 
 FAIR principles apply to workflows as a combination of both FAIR data and FAIR research software. This means that there is a distinction between the workflow as a digital object, and the data that it generates.
 
-* In classical pyiron, workflows are the jupyter notebooks itself, and the data can be separated by the ‘pack’ methods into separate files. However, any processing of data that would be done outside of a pyiron job is not captured.
+### Findable
 
-* In pyiron_workflow,  workflows are well defined, but no data model is used for storage. If implemented, it can capture all operations performed on the data.
+#### F1. A workflow is assigned a globally unique and persistent identifier
 
-These are the relevant aspects for workflows themselves:
-* **Identifiers (F1, F3, A1)**  
-    This is an aspect that pyiron_workflow can achieve. Each step of the workflow or ‘node’ should have identifiers. This would be automatically combined when a user creates a ‘macro’; which is a workflow of workflows.
-* **Licensing (R1.1)**  
-    ‘Nodes’ and ‘macros’ when distributed individually should have compatible licenses.
-* **Data access (A1.1, A1.2)**  
-    Discussion needed on where nodes would be hosted, and how they can be accessed (would there be a common registry, similar to aiida workflow registry?).
-* Workflows should intrinsically provide **precise documentation** of how the data has been generated (R1.2)  
-    Major strength of pyiron_workflow. See I1 for FAIR4RS and FAIR. This also calls for a non-code based representation of workflows, for example in JSON, xml etc. Automated provenance collection can be too fine-grained and too detailed, therefore ontological abstractions can be helpful in reusability.
-* **Structure and form**  
-    workflows are composite and should be composed. It should not depend on the execution order or global states that can change. Division of workflows into sub-workflows is needed.
-* **Versioning**  
-    Each workflow should have a version apart from the dependencies. This would allow us to track how a composite workflow changes.
-* **Executability**  
-    Workflows are executable objects. They should be portable, and include all runtime dependencies. Lightweight container solutions could be useful here, also conda.
-* **Reuse**  
-    workflow reused could mean rerun, replication, reproduction, repurpose. This calls for strong separation of workflow as digital objects, inputs of the workflow, and the generated data. Automated testing of workflow nodes are needed. 
+- F1.1 Components of the workflow representing levels of granularity are assigned distinct identifiers.  
+    
+    Classical pyiron: there are two levels of granularity - one are Jobs which are workflows themselves, and shipped together with other pyiron packages. They benefit from fulfilling the requirements in F1 (FAIR4RS)
+    The other option is using the pyiron workflow template. In this case, the requirement could be met by archiving this in Zenodo, workflowhub etc; and by versioning.
+
+    pyiron_workflow: Granularity is captured in terms of nodes and macros. However, this point would indicate that having different repositories with nodes based on the given granularity (in terms of scientific themes, for example) would be a solution. This way, each of them could be versioned, and stored in a repository, and additionally in an archiving platform.
+
+    *Action points:*
+    * *Strategy discussion is needed to define action plan*
+    * *for pyiron workflow template, recommend archiving on platforms*
+    * *for pyiron workflow template, recommend versioning*
+    * *for pyiron_workflow, separating nodes based on their utility and treating them as individual software packages would be a solution.*
+
+- F1.2 Different versions of the workflow are assigned distinct identifiers.
+
+    *Action points same as F1 above*
+
+#### F2. A workflow and its components are described with rich metadata.
+
+*Action points same as F2 (FAIR4RS)*
+
+#### F3. Metadata clearly and explicitly include the identifier of the workflow, and workflow versions, that they describe.
+
+*Action points same as F2 (FAIR4RS)*
+
+#### F4. Metadata and workflow are registered or indexed in a searchable FAIR resource.
+
+*Action points same as F1.1 above*
+
+### Accessible
+
+#### A1. Workflow and its components are retrievable by their identifiers using a standardized communications protocol
+
+- A1.1 The protocol is open, free, and universally implementable.
+- A1.2 The protocol allows for an authentication and authorization procedure, when necessary.
+
+*Action points:*
+    * *for classical pyiron: the workflow (imagine workflow template) itself should be available through pip/conda for this to be satisfied.*
+    * *for pyiron_workflow, treating nodes and macros as software packages available through conda would address this point*
+
+#### A2. Metadata are accessible, even when the workflow is no longer available.
+
+*Action points:*
+    * *In addition to above, archiving on Zenodo/WorkflowHub will adress this issue.*
+
+### Interoperable
+
+#### I1. Workflow and its metadata (including workflow run provenance) use a formal, accessible, shared, transparent, and broadly applicable language for knowledge representation.
+
+* In classical pyiron, workflows are the jupyter notebooks itself, and processing of data that would be done outside of a pyiron job is not captured. This would be needed to capture full provenance.
+
+* In pyiron_workflow,  workflows are well defined. If with the help of a data model, it can capture all operations performed on the data, it can lead to full provenance. This is indeed a major strength of pyiron_workflow. See I1 for FAIR4RS and FAIR.  
+This also calls for a non-code based representation of workflows, for example in JSON, xml etc. Automated provenance collection can be too fine-grained and too detailed, therefore ontological abstractions can be helpful in reusability.
+
+* atomRDF and conceptual dictionary (for both classical pyiron and pyiron_workflow) also partially tackles this point as they provide a knowledge representation.
+
+*Action points:*
+    * *strategy discussion needed*
+    * *Standardised representation for workflows needed.*
+
+
+#### I2. Metadata and workflow use vocabularies that follow FAIR principles.
+
+* See above, once again, atomRDF, conceptual dictionary, unitton are all developments that can help towards this. 
+
+#### I3. Workflow is specified in a way that allows its components to read, write, and exchange data (including intermediate data), in a way that meets domain-relevant standards.
+
+* In classical pyiron, the data can be separated by the ‘pack’ methods into separate files. HDF5 files are interoperable format, supporting them with ontology based identifiers would be fully meet this point.
+
+* In pyiron_workflow, we do not have a data model at the moment. Implementing this, along with data identifiers would address this point.
+
+*Action points:*
+    * *strategy discussion needed*
+    * *Implementation of ontology based identifiers in data models*
+    * *(Optional) data model in pyiron_workflow*
+
+#### I4. Workflow and its metadata (including workflow run provenance) include qualified references to other objects and the workflow’s components.
+
+*Action points same as I4 (FAIR4RS), additionally provenance representation needed*
+
+### Reproducible
+
+#### R1. Workflow is described with a plurality of accurate and relevant attributes.
+
+- R1.1 Workflow is released with a clear and accessible license.
+- R1.2 Components of the workflow representing levels of granularity are given clear and accessible licenses.
+- R1.3 Workflow is associated with detailed provenance of the workflow and of the products of the workflow.
+
+*Action points:*
+    * *Same as F1*
+    * *Additionally, provenance is needed, see above*
+
+#### R2. Workflow includes qualified references to other workflows.
+
+In pyiron_workflow, this would be automatically met in separation into nodes and macros.
+
+#### R3. Workflow meets domain-relevant community standards.
+
+Workflow reuse could mean rerun, replication, reproduction, repurpose. This calls for strong separation of workflow as digital objects, inputs of the workflow, and the generated data. Automated testing of workflow nodes are needed. 
 
 ## Self-assessment according to [FAIR checklist](https://fairsoftwarechecklist.net/)
 
