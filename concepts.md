@@ -10,10 +10,10 @@
   - pyiron as a software can interoperates with other software by exchanging data and/or metadata, and/or through interaction via application programming interfaces (APIs), described through standards.
   - pyiron as a software is both usable (can be executed) and reusable (can be understood, modified, built upon, or incorporated into other software).
 - the data generated using pyiron are FAIR
-  - the meta(data) is be easy to find for both humans and computers.
+  - the meta(data) is easy to find for both humans and computers.
   - the (meta)data is retrievable by their identifier using a standardised communications protocol, and the metadata are accessible, even when the data are no longer available.
-  - the data generated integrated with other data. In addition, the data can (will be able to) interoperate with applications or workflows for analysis, storage, and processing.
-  - the (meta)data well-described so that they can be replicated and/or combined in different settings.
+  - the data generated integrated with other data. In addition, the data can interoperate with applications or workflows for analysis, storage, and processing.
+  - the (meta)data is well-described so that they can be replicated and/or combined in different settings.
 - the workflows in pyiron are FAIR
   - the workflows and their versions created and implemented in pyiron follow the same principles of FAIR as the data generated using pyiron.
 - pyiron is simple
