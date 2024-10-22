@@ -41,7 +41,6 @@ A any function / callable which is submitted to an executor has to be serializab
 ### TODO
 
 * The goal is to unify the two interfaces in `executorlib` to provide the caching of the `Fileexecutor` as optional feature.
-* A series of smaller nodes with similar resource requirements should be be convertable into one larger task which is then executed by `executorlib` as a single job in the queuing system, i.e. task grouping. 
 * Implement remote file handling. For example when two VASP calculation are submitted to an HPC cluster, with the second VASP calculation depending on the `WAVECAR` from the first VASP calculation. We do not want to copy the `WAVECAR` from the HPC to the workstation and then back from the workstation to the HPC. Still this level of remote file handling is currently not yet implemented in `executorlib`.
 * Update documentation of `executorlib`. Currently prototypical features like the submission to an queuing system outside the queuing system allocation are only documented as prototypical examples [pyiron-dev/remote-executor](https://github.com/pyiron-dev/remote-executor) but are not yet included in the official documentation.
 
