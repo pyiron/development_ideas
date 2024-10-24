@@ -13,7 +13,7 @@ With this strategy both `pyiron_atomistics` and `pyiron_workflow` are matched to
 Using dataclasses in this way optimally streamlines the data migration process, and is currently our preferred course of action.
 However, in general, it is not strictly necessary; for job-based packages without a dataclass interface, a fallback solution is always available to make a bespoke node which takes the saved job file as input and parse the HDF5 for relevant input and output.
 
-## Functionality Compatibility 
+## Functionality Migration: `pyiron_workflow` content TODOs 
 * How to integrate the `interactive` pyiron jobs, which allow couping during the run time in a functional approach?
 * How to integrate the map-reduce pattern provided by the pyiron table in a functional appraoch?
 * How to validate that the complexity for new users does not increase? `pyiron_atomistics` and `pyiron_base` were optimized to enable rapid prototyping by allowing users to develop simulation protocols with as few characters as possible. To benchmark the complexity of the user interface we have a collection of [use cases in `pyiron_base`](https://github.com/pyiron/pyiron_base/tree/main/tests/usecases) which could also be implemented in `pyiron_workflow`. 
