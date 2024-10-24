@@ -26,11 +26,14 @@ The visual programmming interface `pyiron-xyflow` or `PyironFlow` is a gui skin 
 
 ## Planned/desired/in-development features
 
-- Dynamically add nodes from the notebook to the node library (currently being polished by Julius Mittler)
-- Dynamically make macros from the gui using a box selection and add them to the node library (currently in development by Julius Mittler)
-- Automatic positioning of nodes in a nice way on (re-)instantiation (current positioning is passable, but room for improvement exists)
-- Caching based on a hash-based storage. Currently caching does not work at all in the gui since the workflow graph is reinstantiated everytime there's a change in the gui. This could be theoretically fixed by comparing the dictionary of the existing workflow to the new dictionary from the gui. But this would be a painstaking process and easily broken. A better way would be to work with a hash-based storage which would reload outputs when the inputs of a node have not changed. However this would have to be implemented in `pyiron_workflow` and not in the gui side of things.
+- Dynamically add nodes from the notebook to the node library (currently being polished by Julius Mittler).
+- Dynamically make macros from the gui using a box selection and add them to the node library (currently in development by Julius Mittler). The macro creaction function itself would probably need to be in the core `pyiron_workflow` module while the gui elements are handled here.
+- Automatic positioning of nodes in a nice way on (re-)instantiation (current positioning is passable, but room for improvement exists). A feature for this exists in the [pro version](https://reactflow.dev/examples/layout/auto-layout), but is it worth buying considering resources like [this](https://gitlab.com/graphviz/graphviz/-/tree/main/lib/neatogen) exists.
+- Toolbar for controlling the workflow (rather than nodes), ad other global gui options.
+- Toggle to visualize nodes inside macros. We might need to break react for this or buy the [pro version](https://reactflow.dev/examples/layout/expand-collapse). Even with the pro version, there's no guarantee it would work the way we want it to.
+- Enable creation and visualization of circular workflows.
 - Edit the source code of nodes from within the gui. Maybe something that uses the [FileReader](https://stackoverflow.com/questions/51272255/how-to-use-filereader-in-react) api. Need to look into this further.
+- Caching based on a hash-based storage. Currently caching does not work at all in the gui since the workflow graph is reinstantiated everytime there's a change in the gui. This could be theoretically fixed by comparing the dictionary of the existing workflow to the new dictionary from the gui. But this would be a painstaking process and easily broken. A better way would be to work with a hash-based storage which would reload outputs when the inputs of a node have not changed. However this would have to be implemented in `pyiron_workflow` and not in the gui side of things.
 
 
 
