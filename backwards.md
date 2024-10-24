@@ -1,5 +1,7 @@
 # Backwards Compatibility
 To provide the users with a seamless transition from the current `pyiron_atomistics` / `pyiron_base` environment to `pyiron_workflow` it is essential to develop a migration strategy.
+Critical to this is the ability to access data from existing job objects in the new node framework.
+Further, it is important to provide most (but not necessarily) all existing functionality in the new framework, especially domain-specific functionality (e.g. tools from `pyiron_atomistics` like running LAMMPS, calculating a Murnaghan curve, etc.)
 
 ## Data Compatibility
 * The existing `pyiron_atomistics` jobs, in particular the LAMMPS job, SPHINX job and VASP job can be read with [`pyiron_dataclasses`](https://github.com/pyiron/pyiron_dataclasses) to retrieve dataclasses.
