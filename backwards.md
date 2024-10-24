@@ -18,5 +18,21 @@ However, in general, it is not strictly necessary; for job-based packages withou
   * Where multiple interpreters are available, we should consider breaking these nodes into "generic" interpreter modifications that are common (e.g. changes to the atomic structure), which are able to parse generic commands into interpreter specific commands.
 * As a starting point, reproduce functionality for the core [use cases in `pyiron_base`](https://github.com/pyiron/pyiron_base/tree/main/tests/usecases). 
 
+## What to do about pyiron tables?
+
+How to integrate the map-reduce pattern provided by the pyiron table in a functional approach? 
+Should we?
+
+To straightforwardly maintain FAIR properties provided by `pyiron_workflow`, the most direct solution is for users to supply data processing nodes at the end of a given workflow -- i.e. we don't provide any explicit infrastructure support for this type of behaviour, users just analyze data from a workflow in whatever bespoke manner they see fit.
+The upside is trivially retaining FAIR, the downside is a lack of cross-workflow data aggregation.
+
+At the opposite extreme, we could provide a set of functions take a node or nodes (incl. workflows, which are also nodes), and scans over them for particular properties, perhaps in extremely close analogy to the existing table functions.
+While the database behaviour for `pyiron_workflow` is not complete, there is a good chance it could be leveraged for such an attack as well.
+In contrast to the last attack, this would support cross-workflow data aggregation, but it is not clear how to accomplish it in a FAIR context.
+
+One avenue by which we _might_ provide the best of both worlds is by leveraging the fact that the _graph_ root and the _semantic_ root are not necessarily identical. 
+I.e. a given workflow(/macro) has a parent-most node that functions as the "graph root", and currently this is _also_ the "semantic root" -- but in principle it should be possible to decouple these things.
+In such a decoupled world, a "graph" would be a collection of runnable nodes, but these could still retain FAIR connections by giving them "semantic" parent-child relationships to extra-graph semantic objects linking together different graphs.
+If data aggregation tools were attached to these non-node semantic parent objects, and different workflows were placed as children of those same semantic parents, we may be able to operate the aggregation in a semantically connected (and thus FAIR) way...
 ## Next Steps
 While the data compatibility prototype demonstrates that it is technically possible to achieve backwards compatibility, there are likely a number of challenges which still need to be addressed to provide previous users of `pyiron_atomistics` / `pyiron_base` with a migration strategy. 
