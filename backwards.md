@@ -10,6 +10,9 @@ Further, it is important to provide most (but not necessarily) all existing func
 
 With this strategy both `pyiron_atomistics` and `pyiron_workflow` are matched to the same dataclasses. With the additional work on the [`pyiron-conceptual-dict`](https://github.com/pyiron-dev/pyiron-conceptual-dict) these dataclasses can also be mapped to the [`cmso-ontology`](https://github.com/OCDO/cmso-ontology) which again can be used for mapping the data to research datamanagement systems like it is discussed in [`pyiron_rdm`](https://github.com/pyiron/pyiron_rdm). 
 
+Using dataclasses in this way optimally streamlines the data migration process, and is currently our preferred course of action.
+However, in general, it is not strictly necessary; for job-based packages without a dataclass interface, a fallback solution is always available to make a bespoke node which takes the saved job file as input and parse the HDF5 for relevant input and output.
+
 ## Functionality Compatibility 
 * How to integrate the `interactive` pyiron jobs, which allow couping during the run time in a functional approach?
 * How to integrate the map-reduce pattern provided by the pyiron table in a functional appraoch?
