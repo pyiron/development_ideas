@@ -16,7 +16,7 @@ However, in general, it is not strictly necessary; for job-based packages withou
 ## Functionality Migration: `pyiron_workflow` content TODOs 
 * Expose `interactive` pyiron job functionality in a node framework. As a first attack, it should be possible to create one node (per interactive engine) that returns an interactive interpreter object, and other nodes that take this object and perform modifications to run stuff in that interpreter; combined with the possibility to create while-loops, this exposes the existing functionality.
   * Where multiple interpreters are available, we should consider breaking these nodes into "generic" interpreter modifications that are common (e.g. changes to the atomic structure), which are able to parse generic commands into interpreter specific commands.
-* How to validate that the complexity for new users does not increase? `pyiron_atomistics` and `pyiron_base` were optimized to enable rapid prototyping by allowing users to develop simulation protocols with as few characters as possible. To benchmark the complexity of the user interface we have a collection of [use cases in `pyiron_base`](https://github.com/pyiron/pyiron_base/tree/main/tests/usecases) which could also be implemented in `pyiron_workflow`. 
+* As a starting point, reproduce functionality for the core [use cases in `pyiron_base`](https://github.com/pyiron/pyiron_base/tree/main/tests/usecases). 
 
 ## Next Steps
 While the data compatibility prototype demonstrates that it is technically possible to achieve backwards compatibility, there are likely a number of challenges which still need to be addressed to provide previous users of `pyiron_atomistics` / `pyiron_base` with a migration strategy. 
