@@ -34,5 +34,3 @@ One avenue by which we _might_ provide the best of both worlds is by leveraging 
 I.e. a given workflow(/macro) has a parent-most node that functions as the "graph root", and currently this is _also_ the "semantic root" -- but in principle it should be possible to decouple these things.
 In such a decoupled world, a "graph" would be a collection of runnable nodes, but these could still retain FAIR connections by giving them "semantic" parent-child relationships to extra-graph semantic objects linking together different graphs.
 If data aggregation tools were attached to these non-node semantic parent objects, and different workflows were placed as children of those same semantic parents, we may be able to operate the aggregation in a semantically connected (and thus FAIR) way...
-## Next Steps
-While the data compatibility prototype demonstrates that it is technically possible to achieve backwards compatibility, there are likely a number of challenges which still need to be addressed to provide previous users of `pyiron_atomistics` / `pyiron_base` with a migration strategy. 
