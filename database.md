@@ -7,6 +7,7 @@ The following data is of interest:
  - input of the node, either the data directly or a link to another node's output
  - output (optional, only if data is expensive to compute)
  - the node itself, meaning its source code directly or some way to restore it
+ - a human-readable name making it possible to identify what the node does
  - date of creation
  - creator
 The key features are:
@@ -26,7 +27,7 @@ We do not expose any backend related stuff, e.g. tables. This way we can for exa
  - `REMOVE`, we cannot really allow this as it most probably breaks a lot of graphs
 
 ## What features are required for this?
- - input and output needs to be serizable (Storage spec?)
+ - input and output needs to be serializable (Storage spec?)
    - First, inefficient attack already available: all nodes are serializable in the context of their graph, so worst-case we can store the graph save file and the semantic path from the graph root to the node in question, such that the node can be accessed by deserializing the entire graph and following the semantic path to the node in question. Hierarchical storage would massively improve efficiency here.
  - input needs to be hashable
    - Outline of attack available in Joerg's [`pyiron_nodes` hashing](https://github.com/pyiron/pyiron_nodes/blob/main/pyiron_nodes/development/hash_based_storage.py), e.g. [chaining hash references until reaching data that is actually hashable](https://github.com/pyiron/pyiron_nodes/blob/bb4a4c8cc4a57c2c028a591131e76c0d19fa3956/pyiron_nodes/development/hash_based_storage.py#L477). May serve only as a conceptual template depending on the "database" back end actually used.
