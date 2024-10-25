@@ -18,11 +18,12 @@ The key features are:
    - What nodes did a specific user add and what connections did they make?
 
 ## Interface
-CRUD for nodes:
- - CREATE
- - READ
- - UPDATE, do we want to have this? Depending on the change might invalidate following nodes.
- - REMOVE, we cannot really allow this as it most probably breaks a lot of graphs
+We do not expose any backend related stuff, e.g. tables. This way we can for example switch between `postgresql` and `neo4j` if we want to.  
+`CRUD` for nodes:
+ - `CREATE`
+ - `READ`
+ - `UPDATE`, do we want to have this? Depending on the change might invalidate following nodes.
+ - `REMOVE`, we cannot really allow this as it most probably breaks a lot of graphs
 
 ## What features are required for this?
  - input and output needs to be serizable (Storage spec?)
