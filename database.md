@@ -31,6 +31,7 @@ We do not expose any backend related stuff, e.g. tables. This way we can for exa
  - node's logic needs to be hashable
 
 ## Technical difficulties
+ - How do we make this opt-in? Workflows should work without it, using it for some nodes, all nodes?
  - uniquely hashing inputs
    - whitespaces
    - order of elements
