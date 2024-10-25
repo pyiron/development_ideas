@@ -47,6 +47,8 @@ We do not expose any backend related stuff, e.g. tables. This way we can for exa
 
 ## Open questions
  - What does fair mean in this context? Is the backend required to store all information in human-readable form? performance vs readability.
+ - Can the `pyiron_base` database be integrated into this? If possible, we want to have a single storage solution for `pyiron_base` and `pyiron_workflow`.
+ - Can we transfer the existing simulations from `pyiron_base` into this storage concept.
 
 ## Previous discussions
  - https://github.com/pyiron/pyiron_workflow/issues/126
