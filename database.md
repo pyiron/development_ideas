@@ -12,7 +12,7 @@ The following data is of interest:
 The key features are:
  - It allows to uniquely identify a node.
  - It allows to completely restore a workflow and possibly all outputs.
- - It allows to reuse nodes and subgraphs of nodes in different workflows.
+ - It allows to reuse nodes and subgraphs of nodes in different workflows in a pre-executed state.
  - It provides usage statistics
    - How often is one specific node used?
    - What nodes did a specific user add and what connections did they make?
@@ -22,13 +22,16 @@ We do not expose any backend related stuff, e.g. tables. This way we can for exa
 `CRUD` for nodes:
  - `CREATE`
  - `READ`
- - `UPDATE`, do we want to have this? Depending on the change might invalidate following nodes.
+ - `UPDATE`, do we want to have this? Depending on the change this might invalidate following nodes.
  - `REMOVE`, we cannot really allow this as it most probably breaks a lot of graphs
 
 ## What features are required for this?
  - input and output needs to be serizable (Storage spec?)
+   - First, inefficient attack already available: all nodes are serializable in the context of their graph, so worst-case we can store the graph save file and the semantic path from the graph root to the node in question, such that the node can be accessed by deserializing the entire graph and following the semantic path to the node in question. Hierarchical storage would massively improve efficiency here.
  - input needs to be hashable
+   - Outline of attack available in Joerg's [`pyiron_nodes` hashing](https://github.com/pyiron/pyiron_nodes/blob/main/pyiron_nodes/development/hash_based_storage.py), e.g. [chaining hash references until reaching data that is actually hashable](https://github.com/pyiron/pyiron_nodes/blob/bb4a4c8cc4a57c2c028a591131e76c0d19fa3956/pyiron_nodes/development/hash_based_storage.py#L477). May serve only as a conceptual template depending on the "database" back end actually used.
  - node's logic needs to be hashable
+   - Where the output cannot be stored in the database, it may be necessary to store a path to the node's serialized storage location to accomplish this  
 
 ## Technical difficulties
  - How do we make this opt-in? Workflows should work without it, using it for some nodes, all nodes?
