@@ -2,7 +2,7 @@
 
 Software-specific resources should be handled underneath a specific node-hierarchy as determined by the node developers. Developers should not be expected to conform to a specific centralised way of handling software-specific resources.
 
-pyiron_workflow should provide an as-shipped method of reading a "config" or "state" file which indicates to users how resources are preferentially set up, but this should be a non-binding approach to software-specific resources.
+pyiron_workflow should provide an as-shipped method of reading a "config" or "state" file which indicates to users how resources are preferentially set up, but this should be a non-binding approach to software-specific resources. Cf. https://github.com/pyiron/pyiron_workflow/issues/493.
 
 The layer of abstractions handling resources should be as minimal as possible, ideally a single layer, i.e. via the centralised config file only.
 
