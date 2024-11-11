@@ -63,5 +63,28 @@ The majority of these use cases deal with specific topics, for example, APT anal
 
 These requirements should be met by all software tools developed within pyiron to facilitate the broader adoption in the MSE community.
 
+## Further thoughts on the distribution of functions: Using GitHub repositories for nodes[^3]
+
+In addition to the structure of the GUI representation mentioned in the [^1] section. It needs to be evaluated how to store the functions and macros. We need to store on a function level to allow other workflow solutions to pick up and use the functions.
+
+We could store each of the function (packages) in an individual repository within a github organization. We develop a template repository for the node-containing function including
+
+- a python package with all the functions to be wrapped as nodes included and exposed in the `__init__.py` to allow for automatic wrapping.
+
+- The workflow definitions needed for the macro creation, probably simply as `pyiron_workflow` code for now. If there is a convertable workflow description  (WD) at some point, one could switch to that (prequires a pyiron_workflow <-> WD converter)
+
+- An `environment.yml` to clarify the dependencies of the nodes
+
+- A metadata containing file for additional information about the (macro) nodes
+  
+  
+
+These repos could be converted into `conda-forge` feedstocks making all of the packages installable by `conda`. This alsow allows for dependency management on the installation level.
+
+Probably, we will need (semi) atomated meta-packages to install a bunch of nodes in one go (e.g. add all nodes taged `atomistics` to the `pyiron_atomistics_nodes` meta-package). These meta-packages, could also be used to expose the nodes in at the correct semantic import locations, like discussed above concerning the structure of the node store.
+
+To ease community contributions, it would be possible to collect all public repos on GitHub containing a specific tag (e.g. `workflow_node_repo`) and list them as a node-store. This would lift the 'all into one organization' restriction, however, malicious code could enter the framework, if one blindly uses nodes of untrusted sources. (Simply imagine a node in a nice, scientifically relevent and accurate macro package sending the content of the `.ssh` folder to an external server...)
+
 [^1]: (Tara) I have added these points as open questions for discussion
 [^2]: (Sarath) I have added these points in the context of NFDI-MatWerk and my concerns for the distribution.
+[^3]: (Niklas) I added these after some discussions at the NFDI-MatWerk strategy meeting.
