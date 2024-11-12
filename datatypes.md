@@ -20,5 +20,5 @@
 
 [^1]: (Sam) I wrote these points to initiate a discussion, but in reality I don't really know how the actual implementation should look.
 [^2]: (Tara) I wrote this point to continue the discussion. Useful references: [this](https://github.com/pyiron/uniton/issues/6#issue-2551361833) discussion, [asmo](https://github.com/OCDO/asmo/tree/8-asmo-term-additions-needed) ontology, [cmso](https://github.com/OCDO/cmso-ontology) ontology, [pmdco](https://github.com/materialdigital/core-ontology/tree/develop-3.0.0) ontology 
-[^3] (Sarath) I added different levels of interaction with ontologies in increasing complexity. I believe we should first establish which of the levels is beneficial for pyiron, which would help us in identifying the requirements.
+[^3]: (Sarath) I added different levels of interaction with ontologies in increasing complexity. I believe we should first establish which of the levels is beneficial for pyiron, which would help us in identifying the requirements.
 
