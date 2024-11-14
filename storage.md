@@ -101,3 +101,28 @@ class GenericStorage:
     def name(self):
         pass
 ```
+
+
+# Storage Session Notes
+
+Three application parts: storage for executation, storage of workflow graphs, general purpose, longterm storage
+
+For as long as possible all three should take the same technology.
+
+Storage by Recipe:
+1. can we also save say, class path and input args?
+2. via hash based database?
+  - save a node id; use id to look up data type definition from a "data store"
+  - id should be isomorph to module path and version?  Can be translated from `__reduce__`
+  - save primitive datatypes of input
+  - input includes "control" arguments
+  - "workflow like" representation
+  - only save non-default input: use a thin layer on top of reduce + some simplification
+  - as a fallback pickle-like reduce as in tinybase; recommended way should be the one above
+
+Concrete parts of the "id":
+  - module path; *must* be uniquely defining the way to import that underlying object again
+  - this can also be an index into a node store
+  - version
+  - extra metadata?
+  - "code hash" (difficult across python version)
