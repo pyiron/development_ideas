@@ -3,7 +3,9 @@ The executor takes a task, assigns it to the available computing resources and r
 
 ## For Users
 ### Features 
-* The executor enables the assignment of computing resources. This is primarily achieved by interfacing with queuing systems like flux or SLURM. [resource-assignment](https://executorlib.readthedocs.io/en/latest/examples.html#resource-assignment)
+* The executor enables the assignment of computing resources. This is primarily achieved by interfacing with queuing systems like flux or SLURM. [resource-assignment](https://executorlib.readthedocs.io/en/latest/examples.html#resource-assignment). For local execution without a queuing functionality, the assignment of resources is restricted
+  * number of nodes is not tracked or restricted
+  * RAM is also not tracked or restricted
 * The executor can execute dependent tasks, so when a task receives the future object of a previous task, then the task is only scheduled for execution once the future object is done. [coupled-functions](https://executorlib.readthedocs.io/en/latest/examples.html#coupled-functions)
 * The executor introduces a caching mechanism, based on `cloudpickle` which stores the function its arguments and output in an HDF5 file. This HDF5 file is used to submit the function to the queuing system - even via SSH from a separate computer as demonstrated in [pyiron-dev/remote-executor](https://github.com/pyiron-dev/remote-executor/blob/main/example.ipynb). The submitted function remains submitted / running - even when the executor is stopped. When the same function is submitted to the executor again, the executor identifies this function is already cached and returns the output directly.
 
