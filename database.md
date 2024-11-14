@@ -10,6 +10,7 @@ The following data is of interest:
  - a human-readable name making it possible to identify what the node does
  - date of creation
  - creator
+
 The key features are:
  - It allows to uniquely identify a node.
  - It allows to completely restore a workflow and possibly all outputs.
