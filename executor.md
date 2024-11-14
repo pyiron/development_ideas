@@ -1,5 +1,5 @@
 # Executor
-The executor takes a task, assigns it to the available computing resources and returns a `concurrent.future.Future` object. This interface is defined in the python standard library.
+The executor takes a [task](https://docs.python.org/3/library/concurrent.futures.html), assigns it to the available computing resources and returns a `concurrent.future.Future` object. This interface is defined in the python standard library.
 
 ## For Users
 ### Features 
@@ -24,4 +24,3 @@ For more detials [docs.python.org](https://docs.python.org/3/library/concurrent.
 * Implement remote file handling. For example when two VASP calculation are submitted to an HPC cluster, with the second VASP calculation depending on the `WAVECAR` from the first VASP calculation. We do not want to copy the `WAVECAR` from the HPC to the workstation and then back from the workstation to the HPC. Still this level of remote file handling is currently not yet implemented in `executorlib`.
 * Update documentation of `executorlib`. Currently prototypical features like the submission to an queuing system outside the queuing system allocation are only documented as prototypical examples [pyiron-dev/remote-executor](https://github.com/pyiron-dev/remote-executor) but are not yet included in the official documentation.
 * Extend `pyiron_base` to always use `executorlib` for the submission of jobs. Currently, `pyiron_base` still directly interacts with `pysqa` which results in duplicated code. This can be streamlined by using `executorlib` directly. 
-
