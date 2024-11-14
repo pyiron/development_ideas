@@ -1,3 +1,44 @@
+# Discussions from the meeting
+
+## Group level HPC pyiron install
+
+**Use environment.yml from e.g. docker-stacks being tested before actual installation**
+
+### Minimal supported requirements for pyiron_workflow
+- user specific miniconda installation
+  - with jupyter-lab
+  - pyiron_* to be used 
+- sqlite (?)
+
+### Advanced setup
+- all of above
+- shared conda environment
+- possibly postgresql
+
+### Recommended setup
+cmti setup:
+- all of above
+- JupyterHUB
+- postgresql
+
+
+### additional RDM infrastructure
+consider an e.g. openBIS interface to share between institutes/users
+
+## pyiron installation for workshop / student
+Docker based: docker-stacks
+- PMD-S deployment
+- JuoyterHUB (from MPCDF)
+- mybinder (of MPCDF)
+
+## Documentation
+pyiron.org and pyiron-readthedocs should be a central portal to all relevant package documentations
+
+
+Task now: collect all above informaion, document the informations, and publish as guidelines
+
+Lead: Marian
+
 # Specs for interfacing architecture & infrastructure components
 In this section, we aim to provide specifications on how pyiron interfaces with various IT-architecture and -infrastructure components. This includes (the ordering is rather random and more details to each point can be found in the respective subsection below):
 - Running pyiron on HPC systems. This includes setup of various configs (so, a.t.m. running jupyter hub on a cluster node or setting up a "remote HPC" queue-interface). We should also make clear, what typical policies imposed by computing centers/ IT departments  must be considered in that context.
