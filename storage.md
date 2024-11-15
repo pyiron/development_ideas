@@ -119,6 +119,7 @@ Storage by Recipe:
   - "workflow like" representation
   - only save non-default input: use a thin layer on top of reduce + some simplification
   - as a fallback pickle-like reduce as in tinybase; recommended way should be the one above
+  - if the node is defined in `__main__` warn the user and ask to put it to a file
 
 Concrete parts of the "id":
   - module path; *must* be uniquely defining the way to import that underlying object again
