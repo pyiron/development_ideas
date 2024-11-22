@@ -26,6 +26,7 @@ Provide load and store functionality for:
     - `node.inputs.save(filename, metadata, backend)`, `node.inputs.load(filename, metadata, backend)`
     - `node.outputs.save(filename, metadata, backend)`, `node.outputs.load(filename, metadata, backend)`
 - Introduce a `backend` argument that selects how things should be saved.
+    - Can be a list of backends. If one backend fails, the next one is tried. 
 - ❓ Interface: `wf.save(filename, backend)` vs `save(wf, filename, backend)`? As nodes?
     - free function interface has benefits during loading as it does not require a valid class instance 
 
@@ -56,12 +57,15 @@ https://github.com/pyiron/pyiron_workflow/blob/main/pyiron_workflow/node.py#L895
 :-1: no versioning  
 :-1: no metadata  
 :-1: not human-readable (binary format)  
+👎 not suitable for longtime storage
 
 #### cloudpickle
 
 #### HDF5
 
 #### JSON
+- preferred output format
+- guaranteed if input/output described by workflow objects (nodes, dataclasses, primitive data types)
 
 #### Complex one-fits-all backend for workflows from different users
 See [Database](database.md)
