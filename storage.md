@@ -20,15 +20,12 @@ Provide load and store functionality for:
 
 ## How do we want to do it?
 - Provide corresponding methods for the objects to be saved/loaded
-    - `wf.save(filename, metadata, backend)`, `wf.load(filename, metadata, backend)`
-    - `node.save(filename, metadata, backend)`, `node.load(filename, metadata, backend)`
-    - `node.io.save(filename, metadata, backend)`, `node.io.load(filename, metadata, backend)`
-    - `node.inputs.save(filename, metadata, backend)`, `node.inputs.load(filename, metadata, backend)`
-    - `node.outputs.save(filename, metadata, backend)`, `node.outputs.load(filename, metadata, backend)`
+    - `save(wf|node|io, backend, metadata, **kwargs)`
 - Introduce a `backend` argument that selects how things should be saved.
     - Can be a list of backends. If one backend fails, the next one is tried. 
 - ❓ Interface: `wf.save(filename, backend)` vs `save(wf, filename, backend)`? As nodes?
-    - free function interface has benefits during loading as it does not require a valid class instance 
+    - free function interface has benefits during loading as it does not require a valid class instance
+    - ✔️ We decided to go with `save(...)` first and might provide a class function later.
 
 ## Implementation details?
 
