@@ -45,6 +45,7 @@ See the guide(s) on our website(s).
 - Additional infrastructure
   - openBIS
   - CKAN
+  - NOMAD
   - ...
 
 ## Installations for workshops/ student access /ready-to-use envs
@@ -89,6 +90,7 @@ See the guide(s) on our website(s).
 ## resources
 - pyiron.org
 - pyiron-readthedocs
+- executorlib documentation
 - cluster documentation (CM gitlab)
 - PMD deployment-guide
 
