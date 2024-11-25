@@ -20,7 +20,7 @@ Provide load and store functionality for:
 
 ## How do we want to do it?
 - Provide corresponding methods for the objects to be saved/loaded
-    - `save(wf|node|io, backend, metadata, **kwargs)`
+    - `save_workflow(wf, backend, filename, metadata: dict | None = None, data_filter_regex: str | None = None)`
 - Introduce a `backend` argument that selects how things should be saved.
     - Can be a list of backends. If one backend fails, the next one is tried. 
 - ❓ Interface: `wf.save(filename, backend)` vs `save(wf, filename, backend)`? As nodes?
