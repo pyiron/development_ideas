@@ -45,14 +45,14 @@ A major point in data publication is FAIR compliance. A detailed assessment is p
 ## Milestones
 
 1. Conceptual dictionaries available for a certain amount of basic job/node types
-  - To be targeted first: Lammps, VASP, Sphinx, structure, Murnaghan
+  - To be targeted first: Lammps, VASP, Sphinx, structure,  Murnaghan etc. The order will depend on user-demand.
   - Separate *server dataclass* may be needed in addition to the scientific one for a complete conceptual dictionary
   - Working concept exists (development [here](https://github.com/pyiron/pyiron_rdm/tree/pkruzikova_dev))
   - Development dependent on that of dataclasses, Uniton and nodes themselves
 2. Set of functions available to map job/node conceptual dictionaries to the BAM(/SFB1394) OpenBIS data model and upload to OpenBIS
   - Working concept exists (development [here](https://github.com/pyiron/pyiron_rdm/tree/pkruzikova_dev))
   - Development dependent on that of 1. (conceptual dictionaries)
-  - *To be decided:* Where do these functions live?
+  - *To be decided:* Where do these functions live (if on the node-store thingy, then what should be the requirements?) and how are they structured (which information should appear in the main function and what can be imported?)
 3. Upload of full workflow to OpenBIS
   - Option to upload the whole pyiron workflow to OpenBIS, from a code cell or the GUI, using 1. and 2.
   - First concept by March 2025
