@@ -5,7 +5,7 @@ The visual programmming interface `pyiron-xyflow` or `PyironFlow` is a gui skin 
 
 ![VisProgMilestones](https://github.com/user-attachments/assets/a1b02502-7d9a-4a3d-8591-c77601011aba)
 
-Based on the above figure, the priority for the next months is to ensure that the main functionalities are available in the GUI and that the user has a pleasant experience with the tool. For this 4 main categories can be defined:
+Based on the above figure, the priority for the next months is to ensure that the main functionalities are available in the GUI and that the user has an intuitive and pleasant experience with the tool. For this 4 main categories can be defined:
 
 ### 1. Complex workflows:
 - Creating macros (30.11.2024)
