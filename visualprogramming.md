@@ -9,6 +9,7 @@ Based on the above figure, the priority for the next months is to ensure that th
 
 ### 1. Complex workflows:
 - Creating macros (30.11.2024)
+- Automatic positioning (31.01.2024)
 - Visualize components of macros (28.02.2025)
 - Signals for if-statements and while-loops (30.04.2025)
 - ...
