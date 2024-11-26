@@ -1,7 +1,7 @@
 # Storage Interface 
 
 ## Group members
-@XzzX @JNmpi @liamhuber @samwaseda @ligerzero-ai 
+@XzzX @JNmpi @liamhuber @samwaseda @ligerzero-ai @niklassiemer 
 
 ## What is it supposed to do?
 ❗**We expect there are no changes in the python environment, i.e. the exact same environment is used during store and load! We try our best to detect changes and warn the user but we neither guarantee to detect changes nor do we guarantee restored data does work correctly if the environment has changed!**  
