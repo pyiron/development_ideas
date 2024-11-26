@@ -15,6 +15,7 @@ A any function / callable which is submitted to an executor has to be serializab
 ## For Developers 
 The API of the `Executor` class is defined based on there functions: 
 * [`submit(fn, /, *args, **kwargs)`](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Executor.submit) - schedules the callable, `fn`, to be executed as `fn(*args, **kwargs)` and returns a `Future` object representing the execution of the callable.
+  * if `submit` is called a second time, standard library would start the task a second time. The executorlib adds the functionality to load a already sent calculation from a chache
 * [`map(fn, *iterables, timeout=None, chunksize=1)`](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Executor.map) - Similar to [`map(fn, *iterables)`](https://docs.python.org/3/library/functions.html#map) except: the iterables are collected immediately rather than lazily; `fn` is executed asynchronously and several calls to fn may be made concurrently.
 * [`shutdown(wait=True, *, cancel_futures=False)`](https://docs.python.org/3/library/concurrent.futures.html#concurrent.futures.Executor.shutdown) - Signal the executor that it should free any resources that it is using when the currently pending futures are done executing. 
 
