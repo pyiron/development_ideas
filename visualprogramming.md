@@ -19,7 +19,7 @@ Based on the above figure, the priority for the next months is to ensure that th
 - ...
 
 ### 3. Exexution and synchronization
-- Hash-based caching or overhaul existing setup so that workflow is not reinitiated (which clears existing cache) (31.05.2025)
+- Hash-based caching or overhaul existing setup so that workflow is not reinitiated (which clears existing cache) (31.05.2025). One solution for overhauling is to abstract the model-view-controler such that the user input updates the model and gives instructions to the view such that it updates only the relevant pieces. Another is to use the save/load feature of `pyiron_workflow`, but this could be expensive if done for every run. A hybrid of these two approaches for overhauling could also be explored.
 - Dynamically update node library (and to a certain extent reactflow) widget based on changes to function files (30.06.2025)
 - Status of node execution (using hooks on node signals) (28.02.2025)
 - ...
