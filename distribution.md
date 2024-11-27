@@ -1,3 +1,4 @@
+
 # Distribution of Functions 
 - Scientific functions should be contributed from researchers worldwide.
 - The researchers should be able to publish their scientific functions as independent software package, for example by releasing it on [pypi.org](https://pypi.org) and writing a paper for the [journal of open source software](https://joss.theoj.org).
@@ -5,6 +6,44 @@
 - pyiron should be capable to track and ideally synchronize the functions which are available on different computing systems.
 - more complex ecosystems of software (when not only pyiron and other python modules are used) might be best packed and distributed via container images (e.g. Docker or kubernetes). Technical hints, conventions and best practices belong to the section "architecture and infrastructure", so have a look at that branch for this. Here, it is more about making clear what *backends* we support "officially" (Docker, podman, kubenetes, ...) and what the publication *channels* are (continer registries like dockerhub or quay.io).
   - containerization also relates to solutions like binder (mybinder and most importantly the workshop-environments provided by mpcdf)
+
+# Discussion in the spec meeting
+
+A node should be in a repository.
+Multiple nodes might be in one repository if
+- the dependencies are individual
+- the nodes are scientifically connected (related to a scientific publication)
+
+macro nodes are also stored in a repo
+more comlex code with C-bindings or the like need to go to conda-forge, the code needs to be **pure python**
+import should be in the nodes
+unsolved: import for annotations
+node should be stored in a semantic ordering using entrypoints
+
+The repository is published to `conda`
+- own channel for our nodes
+- our own github org for the repos
+- the person submitting the code to the channel, is the author of the node and is maintained by the author
+- semantic versioning vs dated version - not decided
+- automation using github bots to update versions
+
+How to build the interface for our nodes.
+We distribute the datatclasses required for our nodes together with the nodes in the repo, good additions to dataclasses can be PRed into the main dataclass repo.
+
+We need an easy template repo with the following:
+- codemeta metadata json-ld baesed on a config yml file
+- citation cff
+- .github with CI
+- unittest direcory
+- docs
+- README
+- environment.yml
+- file of importable nodes
+
+Security:
+- maintainer is responsible
+
+- Lead Sarath
 
 ## Challenges [^1]
 
@@ -88,3 +127,4 @@ To ease community contributions, it would be possible to collect all public repo
 [^1]: (Tara) I have added these points as open questions for discussion
 [^2]: (Sarath) I have added these points in the context of NFDI-MatWerk and my concerns for the distribution.
 [^3]: (Niklas) I added these after some discussions at the NFDI-MatWerk strategy meeting.
+
