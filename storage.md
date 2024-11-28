@@ -18,7 +18,15 @@ Provide load and store functionality for:
 
 ❓Should data be storeable independent of the workflow? (FAIR?)  
 
-## How do we want to do it?
+## Implementation details?
+
+### Current state
+There is already a `pickle` based load/store solution:  
+https://github.com/pyiron/pyiron_workflow/blob/main/pyiron_workflow/node.py#L895-L915
+
+There is a proof-of-concept implementation of a `GenericStorage` in `tinybase`.
+
+### Front end
 - Provide corresponding methods for the objects to be saved/loaded
     - `save_workflow(wf, backend, filename, metadata: dict | None = None, data_filter_regex: str | None = None)`
 - Introduce a `backend` argument that selects how things should be saved.
@@ -27,17 +35,45 @@ Provide load and store functionality for:
     - free function interface has benefits during loading as it does not require a valid class instance
     - ✔️ We decided to go with `save(...)` first and might provide a class function later.
 
-## Implementation details?
+### Middle end
+#### Envisioned usage
+```python
+with XXXStorage(filename) as storage:
+    storage["a"] = 5
+    b = storage["b"]
+```
 
-### Current state
-There is already a `pickle` based load/store solution:  
-https://github.com/pyiron/pyiron_workflow/blob/main/pyiron_workflow/node.py#L895-L915
+#### GenericStorage
+```python
+class StorageGroup:
+    """API for organizing/loading/storing stuff"""
+    def __getitem__(self, key:str):
+        pass
+    def get(self, key: str, default=None):
+        pass
+    def __setitem__(self, key: str, value):
+        pass
+    def __delitem__(self, key: str):
+        pass
+    def create_group(self, key: str, use_existing: bool):
+        pass
+    def has_group(self, key: str):
+        pass
+    def delete_group(self, key: str):
+        pass
 
-### Requirements for storable objects
-- depends on interface
+class GenericStorage:
+    """Context manager for the storage blob, i.e. file open/close, database connection, etc"""
+    def close(self):
+        pass
+    def __enter__(self):
+        pass
+    def __exit__(self, exc_type, exc_value, traceback):
+        pass
+```
 
-### Backends
-#### Our dream back-end
+#### Back end
+##### Our dream back-end
 - Our dream storage interface is designed to store input and output data for long-term storage and archiving.
 - It should allow loading partial objects, or saving to an existing file to partially update a saved object.
 - It should facilitate browsing/lazy loading -- i.e. we can see what is stored in it and metadata about the stored object without fully reinstating the (partial) object as a python object.
@@ -46,7 +82,7 @@ https://github.com/pyiron/pyiron_workflow/blob/main/pyiron_workflow/node.py#L895
 - It is memory efficient (storage footprint comparable to `pickle`).
 - It should include options for semantically grouping together workflows in different storage locations which could be useful for a variety of purposes like publishing, combining smaller workflows into larger workflows etc.
 
-#### pickle
+##### pickle
 :+1: convenient on-click solution  
 :+1: memory efficient (binary format)  
 :-1: not everything can be stored  
@@ -56,16 +92,14 @@ https://github.com/pyiron/pyiron_workflow/blob/main/pyiron_workflow/node.py#L895
 :-1: not human-readable (binary format)  
 👎 not suitable for longtime storage
 
-#### cloudpickle
+##### cloudpickle
 
-#### HDF5
+##### HDF5
+Implementation of `GenericStorage` using `h5py`
 
-#### JSON
+##### JSON
 - preferred output format
 - guaranteed if input/output described by workflow objects (nodes, dataclasses, primitive data types)
-
-#### Complex one-fits-all backend for workflows from different users
-See [Database](database.md)
 
 # Appendix
 ## Tinybase Interface
