@@ -45,29 +45,49 @@ with XXXStorage(filename) as storage:
 
 #### GenericStorage
 ```python
-class StorageGroup:
+class StorageGroup(abc.ABC):
     """API for organizing/loading/storing stuff"""
-    def __getitem__(self, key:str):
-        pass
-    def get(self, key: str, default=None):
-        pass
-    def __setitem__(self, key: str, value):
-        pass
-    def __delitem__(self, key: str):
-        pass
-    def create_group(self, key: str, use_existing: bool):
-        pass
-    def has_group(self, key: str):
-        pass
-    def delete_group(self, key: str):
+
+    @abc.abstractmethod
+    def create_group(self, key: str) -> StorageGroup:
         pass
 
-class GenericStorage:
+    @abc.abstractmethod
+    def get(self, key: str, default: Any = None):
+        pass
+
+    @abc.abstractmethod
+    def __contains__(self, key: str):
+        pass
+
+    @abc.abstractmethod
+    def __delitem__(self, key: str):
+        pass
+
+    @abc.abstractmethod
+    def __getitem__(self, key: str):
+        pass
+
+    @abc.abstractmethod
+    def __setitem__(self, key: str, value: Any):
+        pass
+
+    @abc.abstractmethod
+    def require_group(self, key: str) -> StorageGroup:
+        pass
+
+class GenericStorage(abc.ABC):
     """Context manager for the storage blob, i.e. file open/close, database connection, etc"""
+
+    @abc.abstractmethod
     def close(self):
         pass
-    def __enter__(self):
+
+    @abc.abstractmethod
+    def __enter__(self) -> StorageGroup:
         pass
+
+    @abc.abstractmethod
     def __exit__(self, exc_type, exc_value, traceback):
         pass
 ```
