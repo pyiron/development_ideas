@@ -1,6 +1,38 @@
 # Visual Programming Interface
 The visual programmming interface `pyiron-xyflow` or `PyironFlow` is a gui skin based on [ReactFlow](https://reactflow.dev/) that currently works on top of `pyiron_workflow`. Theoretically, one could currently pack `pyiron_base` jobs into nodes for execution. The gui could also be extended to pack the workflow graph (extracted from the gui using `get_workflow()`) into a `pyiron_base` job for execution. An existing code-based workflow graph can be packed into the gui using `PyironFlow([wf])` where wf is the existing graph.
 
+## Milestones
+
+![VisProgMilestones](https://github.com/user-attachments/assets/a1b02502-7d9a-4a3d-8591-c77601011aba)
+
+Based on the above figure, the priority for the next months is to ensure that the main functionalities are available in the GUI and that the user has an intuitive and pleasant experience with the tool. For this 4 main categories can be defined:
+
+### 1. Complex workflows:
+- Creating macros (30.11.2024)
+- Automatic positioning (31.01.2024)
+- Visualize components of macros (28.02.2025)
+- Signals for if-statements and while-loops (30.04.2025)
+- ...
+
+### 2. Global workflow control
+- A toolbar for running/saving/loading worflows (31.12.2024)
+- Tabs in the accordian for uploading entire graph to openBIS, setting HPC parameters for entire graph submission etc. (30.06.2025)
+- ...
+
+### 3. Exexution and synchronization
+- Hash-based caching or overhaul existing setup so that workflow is not reinitiated (which clears existing cache) (31.05.2025). One solution for overhauling is to abstract the model-view-controler such that the user input updates the model and gives instructions to the view such that it updates only the relevant pieces. Another is to use the save/load feature of `pyiron_workflow`, but this could be expensive if done for every run. A hybrid of these two approaches for overhauling could also be explored.
+- Dynamically update node library (and to a certain extent reactflow) widget based on changes to function files (30.06.2025)
+- Status of node execution (using hooks on node signals) (28.02.2025)
+- ...
+
+### 4. Cosmetics
+- Expand on themes (30.06.2025)
+- Give users the ability to set viewport size, layout etc. (30.06.2025)
+- ...
+
+The expected time and order of completion is dependent on the number of resources available and on the interests of said resources (e.g., directions students would like to take in their master's thesis).
+
+
 ## Example of a multiscale simulation
 
 ### Problem definition:
