@@ -85,6 +85,8 @@ def restore_node_from_database(
     Returns:
         The restored node.
     """
+
+def get_hash(obj_to_be_hashed: Node | dict) -> str:
 ```
 
 ## What features are required for this?
