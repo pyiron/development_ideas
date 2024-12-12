@@ -1,3 +1,80 @@
+# Repository Structure, Management, and Frontend Integration for Nodes
+This write-up is based on the strategy hackathon, and describes the repository structure, node management guidelines, and a frontend system to streamline interaction with the GitHub organization and node store. Additionally, it incorporates a review process for quality assurance and certification of nodes. The main aim of a node is to foster collaboration while ensuring ease of use and integration.
+
+- Researchers worldwide are encouraged to contribute their scientific functions to the Pyiron community.
+- These functions can be published as independent software packages, for example, releasing the package on platforms like PyPI.
+- Accompanying the release with a publication in journals like the Journal of Open Source Software (JOSS).
+
+At the moment, nodes will live as repositories under an umbrella organisation. The requirements of the repositories are below. This will be initial version of the node store. Ideally, node store would be a frontend, where all the nodes from the GitHub organisation are indexed, and there are searchable, and installable. An example is the [PMD Workflow store](https://workflows.material-digital.de/). We (ideally) have a lot of functionality to ensure good metadata for nodes. This should all be done with the help of CI. 
+
+## Node Organization and Storage
+
+### Repository Structure:
+- Node Repositories:
+  - A node is stored in its own repository.
+  -  Multiple nodes can exist within a single repository if:
+      - Dependencies are same/similar.
+      - Nodes are scientifically connected (e.g., tied to a specific publication).
+  - Complex nodes (e.g., involving C-bindings) are stored in a repository but published via conda-forge.
+
+- Import and Storage Rules:
+  - Imports:
+    -  Nodes must contain their own imports. The mechanism for importing annotations remains unresolved.
+  -  Storage Format:
+    -  Nodes should use semantic ordering via entry points for structured storage and discovery.
+
+### Interface and Data Classes
+-  Node Interface:
+    -  Each repository will include data classes required by the nodes.
+    -  Enhancements to these data classes can be contributed via pull requests to the main data class repository.
+
+## Repository Publication and Distribution
+
+### Package Distribution
+
+-  Conda Publication:
+    -  Nodes are published to a dedicated Conda channel (later, we can start with conda-forge).
+    -  Repositories are hosted in a dedicated GitHub organization.
+-  Authorship and Maintenance:
+    -  Ownership: The submitting author is the maintainer and is responsible for updates and security.
+-  Versioning:
+    -  Semantic versioning (e.g., v1.0.0) or date-based versioning (e.g., 2024.11) will be chosen.
+-  Automation:
+    -  GitHub bots will automate version updates and routine tasks.
+
+## Frontend for Node Indexing and Management
+
+## Core Features
+-  Node Indexing:
+    -  Integrates with the GitHub organization to fetch and index repositories.
+    -  Metadata, scientific relationships, and dependencies are cataloged.
+-  DOI Generation:
+    -  Assigns DOIs to nodes using a DOI provider (e.g., DataCite, Zenodo) for traceability.
+-  Search and Discovery:
+    -  Search nodes by keywords, tags, dependencies, and publications.
+-  Documentation Display:
+    -  Automatically fetches README files, citation information, and associated publications.
+-  Download and Install:
+    -  Provides direct installation instructions (e.g., conda install <node>).
+
+## Template Repository Setup
+A template repository ensures consistent structure across nodes:
+
+-  Metadata:
+    -  codemeta.json (JSON-LD format) and CITATION.cff.
+-  GitHub Config:
+    -  .github directory for CI/CD workflows.
+-  Code Organization:
+    -  Directories for unittest, docs, and importable node files.
+    -  README, environment.yml, and security guidelines.
+
+## Security and Maintenance
+-  Responsibilities:
+    -  Maintainer Accountability: Maintainers are responsible for the node’s integrity, updates, and security.
+
+---
+
+From here, follows the discussion from pre-hackathon discussions:
 
 # Distribution of Functions 
 - Scientific functions should be contributed from researchers worldwide.
