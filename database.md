@@ -20,12 +20,74 @@ The key features are:
    - What nodes did a specific user add and what connections did they make?
 
 ## Interface
-We do not expose any backend related stuff, e.g. tables. This way we can for example switch between `postgresql` and `neo4j` if we want to.  
-`CRUD` for nodes:
- - `CREATE`
- - `READ`
- - `UPDATE`, do we want to have this? Depending on the change this might invalidate following nodes.
- - `REMOVE`, we cannot really allow this as it most probably breaks a lot of graphs
+```python
+def store_node_outputs(node: Node) -> str:
+    """
+    Store a node's outputs into an HDF5 file.
+
+    Args:
+        node (Node): The node whose outputs should be stored.
+
+    Returns:
+        str: The file path where the node's outputs are stored.
+    """
+
+def restore_node_outputs(node: Node) -> bool:
+    """
+    Restore a node's outputs from a stored HDF5 file, given by node.hash.
+    
+    Args:
+        node (Node): the node whose outputs should be restored.
+    
+    Returns:
+        True if the outputs were restored, False if not.
+    """
+
+def store_node_in_database(
+    db: CacheDatabase,
+    node: Node,
+    store_outputs: bool = False,
+    store_input_nodes_recursively: bool = False,
+) -> str:
+    """
+    Store a node in a database.
+
+    This function stores all the information that is required to restore a node from the
+    database.
+
+    Args:
+        db (CacheDatabase): The database to store the node in.
+        node (Node): The node to store.
+        store_outputs (bool): Whether to store the outputs of the node as well.
+        store_input_nodes_recursively (bool): Whether to store all the nodes that are
+            connected to the inputs of the node recursively.
+
+    Returns:
+        Node hash.
+    """
+
+def restore_node_from_database(
+    db: CacheDatabase, node_hash: str, parent: Workflow
+) -> Node:
+    """
+    Restore a node from the database.
+
+    The node is reconstructed from the database by calling recreate_node and
+    adding it to the given parent workflow. The node's inputs are then restored
+    either by connecting them to other nodes in the workflow or by setting their
+    values directly.
+
+    Args:
+        db (CacheDatabase): The CacheDatabase instance to read from.
+        node_hash (str): The hash of the node to restore.
+        parent (Workflow): The workflow to add the restored node to.
+
+    Returns:
+        The restored node.
+    """
+
+def get_hash(obj_to_be_hashed: Node | dict) -> str:
+```
 
 ## What features are required for this?
  - input and output needs to be serializable (Storage spec?)
