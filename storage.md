@@ -42,10 +42,11 @@ with XXXStorage(filename) as storage:
     storage["a"] = 5
     b = storage["b"]
 ```
+`storage` should be usable like a dict and support the creation of groups like `h5py` does.
 
 #### GenericStorage
 ```python
-class StorageGroup(abc.ABC):
+class StorageGroup(abc.ABC, MutableMapping[str, Any]):
     """API for organizing/loading/storing stuff"""
 
     @abc.abstractmethod
@@ -57,27 +58,12 @@ class StorageGroup(abc.ABC):
         pass
 
     @abc.abstractmethod
-    def __contains__(self, key: str):
-        pass
-
-    @abc.abstractmethod
-    def __delitem__(self, key: str):
-        pass
-
-    @abc.abstractmethod
-    def __getitem__(self, key: str):
-        pass
-
-    @abc.abstractmethod
-    def __setitem__(self, key: str, value: Any):
-        pass
-
-    @abc.abstractmethod
     def require_group(self, key: str) -> StorageGroup:
         pass
 
+
 class GenericStorage(abc.ABC):
-    """Context manager for the storage blob, i.e. file open/close, database connection, etc"""
+    """Context manager for the storage blob, i.e. file open/close, etc"""
 
     @abc.abstractmethod
     def close(self):
